@@ -24,17 +24,16 @@ def drive_space_free(path):
     return
     #returns the amount of space free on the drive
 
-def print_settings(args, current_time, file_path, disk_free_space):
+def print_settings(args, current_time, end_time, file_path, disk_free_space):
     current_time_printable = current_time.strftime("%H:%M")
     print("\n")
     print("Settings:")
     print(f"\tThe current time is {current_time_printable} (24h format)")
     print(f"\tPictures will be taken between {args.start_time_of_day} and {args.end_time_of_day}")
-    print(f"\tImages will be saved in {args.save_location}")
-    print(f"\tTotal duration is {args.total_time_duration} hours")
-    print(f"\tPictures will be taken every {args.frequency_of_pictures} seconds")
+    print(f"\tTotal duration is {args.total_hours_duration} hours and will complete at {end_time}")
+    print(f"\tPictures will be taken every {args.frequency_of_pictures} minute(s)")
     print(f"\tPictures will be saved in the folder {file_path}")
-    print(f"\tThe pictures folder has {disk_free_space:.2f} MB free space")
+    print(f"\tThe folder has {disk_free_space:.2f} MB ({disk_free_space/1024:.2f} GB) of free space")
     print("\n")
 
     # Here you would implement the actual picture-taking logic
