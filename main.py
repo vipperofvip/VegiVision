@@ -1,7 +1,7 @@
 import sys
 import argparse
 from datetime import datetime, timedelta
-from functions import print_settings, prepare_filesystem, ensure_directory_exists, get_free_space
+from functions import is_time_between, print_settings, prepare_filesystem, ensure_directory_exists, get_free_space
 import os
 
 
@@ -17,8 +17,13 @@ def main():
     args = parser.parse_args()
 
     # get the current time
-    current_time = datetime.now()
-    end_time = current_time + timedelta(hours=args.total_hours_duration)
+    current_date_time = datetime.now()
+    complete_date_time = current_date_time + timedelta(hours=args.total_hours_duration)
+    start_time = datetime.strptime(args.start_time_of_day, "%H:%M").time()
+    end_time = datetime.strptime(args.end_time_of_day, "%H:%M").time()
+    total_hours_duration = args.total_hours_duration
+    frequency_of_pictures = args.frequency_of_pictures
+    
     # get the current path
     folder_path = os.path.abspath(args.save_location)
 
@@ -26,10 +31,12 @@ def main():
     disk_free_space = get_free_space(folder_path)
 
     # show the user all the settings we have
-    print_settings(args, current_time, end_time, folder_path, disk_free_space)
+    print_settings(start_time, end_time, total_hours_duration, frequency_of_pictures,current_date_time.time(), complete_date_time, folder_path, disk_free_space)
 
-
-
+    if is_time_between(start_time, end_time):
+        print("we are in the time span")
+    else:
+        print("we are NOT in the time span")
 
 if __name__ == "__main__":
     main()
