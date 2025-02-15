@@ -7,11 +7,13 @@ def capture_picture():
     print("took a picture")
     return
 
+
 def prepare_filesystem(path):
     # Get the absolute path of the current file
     current_file_path = os.path.abspath(__file__)
 
     print(f"The current file path is: {current_file_path}")
+
 
 def ensure_directory_exists(directory_path):
     """
@@ -28,30 +30,38 @@ def ensure_directory_exists(directory_path):
 
 def drive_space_free(path):
     return
-    #returns the amount of space free on the drive
+    # returns the amount of space free on the drive
 
-def print_settings(start_time, 
-                    end_time, 
-                    total_hours_duration, 
-                    frequency_of_pictures,
-                    current_time, 
-                    complete_date_time, 
-                    file_path, 
-                    disk_free_space):
+
+def print_settings(
+    start_time,
+    end_time,
+    total_hours_duration,
+    frequency_of_pictures,
+    current_time,
+    complete_date_time,
+    file_path,
+    disk_free_space,
+):
     current_time_printable = current_time.strftime("%H:%M")
     print("\n")
     print("Settings:")
     print(f"\tThe current time is {current_time_printable} (24h format)")
     print(f"\tPictures will be taken between {start_time} and {end_time}")
-    print(f"\tTotal duration is {total_hours_duration} hours and will complete at {complete_date_time}")
+    print(
+        f"\tTotal duration is {total_hours_duration} hours and will complete at {complete_date_time}"
+    )
     print(f"\tPictures will be taken every {frequency_of_pictures} minute(s)")
     print(f"\tPictures will be saved in the folder {file_path}")
-    print(f"\tThe folder has {disk_free_space:.2f} MB ({disk_free_space/1024:.2f} GB) of free space")
+    print(
+        f"\tThe folder has {disk_free_space:.2f} MB ({disk_free_space/1024:.2f} GB) of free space"
+    )
     print("\n")
 
     # Here you would implement the actual picture-taking logic
     # For this example, we'll just simulate it with print statements:
     print("Simulating picture taking...")
+
 
 def is_time_between(start_time, end_time):
     """
@@ -71,6 +81,7 @@ def is_time_between(start_time, end_time):
         # Case where the time span crosses midnight
         return current_time >= start_time or current_time <= end_time
 
+
 def get_free_space(path):
     """
     Get the amount of free disk space at the given path.
@@ -86,11 +97,11 @@ def get_free_space(path):
         # Convert bytes to a more human-readable format
         free_space_mb = free_space / (1024 * 1024)  # Convert to MB
         free_space_gb = free_space / (1024 * 1024 * 1024)  # Convert to GB
-        
-        #print(f"Free space on {abs_path}:")
-        #print(f"  - {free_space} bytes")
-        #print(f"  - {free_space_mb:.2f} MB")
-        #print(f"  - {free_space_gb:.2f} GB")
+
+        # print(f"Free space on {abs_path}:")
+        # print(f"  - {free_space} bytes")
+        # print(f"  - {free_space_mb:.2f} MB")
+        # print(f"  - {free_space_gb:.2f} GB")
         return free_space_mb
 
     except Exception as e:
