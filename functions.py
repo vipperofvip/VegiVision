@@ -2,6 +2,11 @@ import os
 import shutil
 from datetime import datetime
 
+
+def capture_picture():
+    print("took a picture")
+    return
+
 def prepare_filesystem(path):
     # Get the absolute path of the current file
     current_file_path = os.path.abspath(__file__)

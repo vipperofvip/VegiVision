@@ -1,8 +1,9 @@
 import sys
 import argparse
 from datetime import datetime, timedelta
-from functions import is_time_between, print_settings, prepare_filesystem, ensure_directory_exists, get_free_space
+from functions import capture_picture, is_time_between, print_settings, prepare_filesystem, ensure_directory_exists, get_free_space
 import os
+from time import sleep
 
 
 def main():
@@ -30,13 +31,19 @@ def main():
     ensure_directory_exists(folder_path)
     disk_free_space = get_free_space(folder_path)
 
-    # show the user all the settings we have
+    # show the user all the settings we have calculated
     print_settings(start_time, end_time, total_hours_duration, frequency_of_pictures,current_date_time.time(), complete_date_time, folder_path, disk_free_space)
 
-    if is_time_between(start_time, end_time):
-        print("we are in the time span")
-    else:
-        print("we are NOT in the time span")
+    while datetime.now() < complete_date_time:
+        if is_time_between(start_time, end_time):
+            print("we are in the time span")
+            capture_picture()
+            print(f"sleeping for {frequency_of_pictures} minute(s)")
+            sleep(frequency_of_pictures * 60)
+        else:
+            print(f"we are NOT in the time span, sleeping until {start_time}")
+        #todo: calculate how long to sleep
+        sleep(frequency_of_pictures * 60)
 
 if __name__ == "__main__":
     main()
