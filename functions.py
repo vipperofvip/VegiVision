@@ -4,9 +4,9 @@ from datetime import datetime
 import time
 from picamera2 import Picamera2, Preview
 
-def capture_picture(picam=picam,folder=folder,run_name="test"):
-    picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
-    print("took a picture")
+#def capture_picture(picam=picam,folder=folder,run_name="test"):
+    # picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
+    # print("took a picture")
     return
 
 def camera_start_preview():
