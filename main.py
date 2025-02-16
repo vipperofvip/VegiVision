@@ -66,7 +66,8 @@ def main():
     frequency_of_pictures = args.frequency_of_pictures
 
     # get the current path
-    folder_path = os.path.abspath(args.save_location)
+    folder_path = f"{os.path.abspath(args.save_location)}/{run_name}"
+    print(f"The folder path is {folder_path}")
 
     ensure_directory_exists(folder_path)
     disk_free_space = get_free_space(folder_path)
