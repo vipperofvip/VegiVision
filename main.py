@@ -48,6 +48,12 @@ def main():
         default=1,
         help="Frequency of pictures in minutes",
     )
+    parser.add_argument(
+        "--run_name",
+        type=str,
+        default="test",
+        help="Frequency of pictures in minutes",
+    )
     args = parser.parse_args()
 
     # get the current time
