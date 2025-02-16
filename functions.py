@@ -9,15 +9,15 @@ from picamera2 import Picamera2, Preview
     # print("took a picture")
     #return
 
-def camera_start_preview():
-    # picam = Picamera2()
-    # config = picam.create_preview_configuration(main={"size": (1920, 1080)})
-    # #config = picam.create_preview_configuration()
-    # picam.configure(config)
-    # picam.start_preview(Preview.QTGL)
-    # picam.start()
-    # return picam
-    pass
+# def camera_start_preview():
+#     # picam = Picamera2()
+#     # config = picam.create_preview_configuration(main={"size": (1920, 1080)})
+#     # #config = picam.create_preview_configuration()
+#     # picam.configure(config)
+#     # picam.start_preview(Preview.QTGL)
+#     # picam.start()
+#     # return picam
+#     pass
 
 def prepare_filesystem(path):
     # Get the absolute path of the current file
