@@ -1,10 +1,11 @@
 import os
 import shutil
 from datetime import datetime
+import time
 from picamera2 import Picamera2, Preview
 
-def capture_picture(picam):
-    picam.capture_file("testtl{0:06d}.jpg".format(i))
+def capture_picture(picam=picam,folder=folder,run_name="test"):
+    picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
     print("took a picture")
     return
 
@@ -15,7 +16,6 @@ def camera_start_preview():
     picam.configure(config)
     picam.start_preview(Preview.QTGL)
     picam.start()
-    
     return picam
 
 def prepare_filesystem(path):
