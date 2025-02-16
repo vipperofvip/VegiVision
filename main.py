@@ -86,8 +86,8 @@ def main():
             sleep(frequency_of_pictures * 60)
         else:
             print(f"we are NOT in the time span, sleeping until {start_time}")
-        # todo: calculate how long to sleep
-        sleep(frequency_of_pictures * 60)
+            # todo: calculate how long to sleep
+            sleep(frequency_of_pictures * 60)
 
 
 if __name__ == "__main__":

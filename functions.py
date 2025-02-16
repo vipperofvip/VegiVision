@@ -14,6 +14,8 @@ def camera_start_preview():
     #config = picam.create_preview_configuration()
     picam.configure(config)
     picam.start_preview(Preview.QTGL)
+    picam.start()
+    
     return picam
 
 def prepare_filesystem(path):
