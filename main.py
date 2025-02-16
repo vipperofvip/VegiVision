@@ -8,6 +8,7 @@ from functions import (
     prepare_filesystem,
     ensure_directory_exists,
     get_free_space,
+    camera_start_preview
 )
 import os
 from time import sleep
@@ -75,10 +76,12 @@ def main():
         disk_free_space,
     )
 
+    picam = camera_start_preview()
+
     while datetime.now() < complete_date_time:
         if is_time_between(start_time, end_time):
             print("we are in the time span")
-            capture_picture()
+            #capture_picture(picam)
             print(f"sleeping for {frequency_of_pictures} minute(s)")
             sleep(frequency_of_pictures * 60)
         else:
