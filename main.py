@@ -11,6 +11,7 @@ from functions import (
 )
 import os
 from time import sleep
+import time
 
 
 def main():
