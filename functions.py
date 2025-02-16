@@ -17,6 +17,7 @@ def camera_start_preview():
     # picam.start_preview(Preview.QTGL)
     # picam.start()
     # return picam
+    pass
 
 def prepare_filesystem(path):
     # Get the absolute path of the current file
