@@ -1,6 +1,7 @@
 import sys
 import argparse
 from datetime import datetime, timedelta
+from picamera2 import Picamera2, Preview
 from functions import (
     capture_picture,
     is_time_between,
@@ -76,7 +77,12 @@ def main():
         disk_free_space,
     )
 
-    picam = camera_start_preview()
+    picam = Picamera2()
+    config = picam.create_preview_configuration(main={"size": (1920, 1080)})
+    #config = picam.create_preview_configuration()
+    picam.configure(config)
+    picam.start_preview(Preview.QTGL)
+    picam.start()
 
     while datetime.now() < complete_date_time:
         if is_time_between(start_time, end_time):

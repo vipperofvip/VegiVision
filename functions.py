@@ -10,13 +10,13 @@ def capture_picture(picam=picam,folder=folder,run_name="test"):
     return
 
 def camera_start_preview():
-    picam = Picamera2()
-    config = picam.create_preview_configuration(main={"size": (1920, 1080)})
-    #config = picam.create_preview_configuration()
-    picam.configure(config)
-    picam.start_preview(Preview.QTGL)
-    picam.start()
-    return picam
+    # picam = Picamera2()
+    # config = picam.create_preview_configuration(main={"size": (1920, 1080)})
+    # #config = picam.create_preview_configuration()
+    # picam.configure(config)
+    # picam.start_preview(Preview.QTGL)
+    # picam.start()
+    # return picam
 
 def prepare_filesystem(path):
     # Get the absolute path of the current file
