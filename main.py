@@ -87,7 +87,8 @@ def main():
     while datetime.now() < complete_date_time:
         if is_time_between(start_time, end_time):
             print("we are in the time span")
-            capture_picture(picam,folder_path,"test1")
+            #capture_picture(picam,folder_path,"test1")
+            picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
             print(f"sleeping for {frequency_of_pictures} minute(s)")
             sleep(frequency_of_pictures * 60)
         else:
