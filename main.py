@@ -3,13 +3,11 @@ import argparse
 from datetime import datetime, timedelta
 from picamera2 import Picamera2, Preview
 from functions import (
-    capture_picture,
     is_time_between,
     print_settings,
     prepare_filesystem,
     ensure_directory_exists,
     get_free_space,
-    camera_start_preview
 )
 import os
 from time import sleep
