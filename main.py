@@ -61,6 +61,7 @@ def main():
     complete_date_time = current_date_time + timedelta(hours=args.total_hours_duration)
     start_time = datetime.strptime(args.start_time_of_day, "%H:%M").time()
     end_time = datetime.strptime(args.end_time_of_day, "%H:%M").time()
+    run_name = args.run_name
     total_hours_duration = args.total_hours_duration
     frequency_of_pictures = args.frequency_of_pictures
 
@@ -93,7 +94,7 @@ def main():
         if is_time_between(start_time, end_time):
             print("we are in the time span")
             #capture_picture(picam,folder_path,"test1")
-            picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
+            picam.capture_file(f"{run_name}_{time.time()}.jpg"
             print(f"sleeping for {frequency_of_pictures} minute(s)")
             sleep(frequency_of_pictures * 60)
         else:
