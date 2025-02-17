@@ -13,6 +13,9 @@ import os
 from time import sleep
 import time
 
+# TODO: test writing to mounted media (handle prepended / as absolute path)
+# TODO: Add logging, debug logs
+
 
 def main():
 
