@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from functions import (
     is_time_between,
     print_settings,
-    prepare_filesystem,
     ensure_directory_exists,
     get_free_space,
 )
@@ -14,12 +13,8 @@ from time import sleep
 import time
 
 # TODO: test writing to mounted media (handle prepended / as absolute path)
-# TODO: Add logging, debug logs
 # TODO: periodically show disk space free
 # TODO: make requirements.txt and installation instructions
-
-
-
 
 def main():
 
@@ -46,7 +41,7 @@ def main():
     parser.add_argument(
         "--total_duration_days",
         type=int,
-        default="168",
+        default="28",
         help="Total duration in number of days (default=28)",
     )
     parser.add_argument(
@@ -117,15 +112,24 @@ def main():
 
     while datetime.now() < complete_date_time:
         if is_time_between(start_time, end_time):
+            last_file_size = 0
             logger.debug("we are in the time span")
             #capture_picture(picam,folder_path,"test1")
-            logger.info(f"About to write file {folder_path}/{run_name}_{time.time()}.jpg")
-            if not no_camera:
-                picam.capture_file(f"{folder_path}/{run_name}_{time.time()}.jpg")
+            filename = f"{folder_path}/{run_name}_{time.time()}.jpg"
+
+            if not no_camera:    
+                logger.info(f"Saving picture {filename}")    
+                picam.capture_file(filename)
+                last_fize_size = os.path.getsize(filename) / (1024 * 1024)
+                logger.debug(f"file was {last_fize_size} bytes")
+            else:
+                logger.info("Skipping the picture taking due to no_camera being set")
+
             logger.debug(f"sleeping for {frequency_of_pictures_seconds} seconds")
             sleep(frequency_of_pictures_seconds)
         else:
-            logger.debug(f"we are NOT in the time span, sleeping until {start_time}")
+
+            logger.debug(f"we are not in the time span, sleeping until {start_time}")
             # todo: calculate how long to sleep
             sleep(frequency_of_pictures_seconds)
 

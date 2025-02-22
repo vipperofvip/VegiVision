@@ -2,14 +2,9 @@ import os
 import shutil
 from datetime import datetime
 import time
+import logging
 #from picamera2 import Picamera2, Preview
 
-
-def prepare_filesystem(path):
-    # Get the absolute path of the current file
-    current_file_path = os.path.abspath(__file__)
-
-    print(f"The current file path is: {current_file_path}")
 
 
 def ensure_directory_exists(directory_path):
@@ -18,11 +13,12 @@ def ensure_directory_exists(directory_path):
 
     :param directory_path: The path of the directory to ensure exists.
     """
+    logger = logging.getLogger(__name__)
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
-        print(f"Directory '{directory_path}' was created.")
+        logger.debug(f"Directory '{directory_path}' was created.")
     else:
-        print(f"Directory '{directory_path}' already exists, no need to create it")
+        logger.debug(f"Directory '{directory_path}' already exists, no need to create it")
 
 
 def drive_space_free(path):
@@ -46,7 +42,7 @@ def print_settings(
     print(f"\tThe current time is {current_time_printable} (24h format)")
     print(f"\tPictures will be taken between {start_time} and {end_time}")
     print(
-        f"\tTotal duration is {total_days_duration} days and will complete at {complete_date_time}"
+        f"\tTotal duration is {total_days_duration} days ({total_days_duration/7} weeks) and will complete at {complete_date_time}"
     )
     print(f"\tPictures will be taken every {frequency_of_pictures_seconds} seconds ({frequency_of_pictures_seconds/60} minutes)")
     print(f"\tPictures will be saved in the folder {file_path}")
@@ -54,11 +50,6 @@ def print_settings(
         f"\tThe folder has {disk_free_space:.2f} MB ({disk_free_space/1024:.2f} GB) of free space"
     )
     print("\n")
-
-    # Here you would implement the actual picture-taking logic
-    # For this example, we'll just simulate it with print statements:
-    print("Simulating picture taking...")
-
 
 def is_time_between(start_time, end_time):
     """
