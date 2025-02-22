@@ -121,7 +121,7 @@ def main():
                 logger.info(f"Saving picture {filename}")    
                 picam.capture_file(filename)
                 last_fize_size = os.path.getsize(filename) / (1024 * 1024)
-                logger.debug(f"file was {last_fize_size} bytes")
+                logger.debug(f"file was {last_fize_size:.2f} MB")
             else:
                 logger.info("Skipping the picture taking due to no_camera being set")
 
