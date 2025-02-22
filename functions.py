@@ -2,22 +2,8 @@ import os
 import shutil
 from datetime import datetime
 import time
-from picamera2 import Picamera2, Preview
+#from picamera2 import Picamera2, Preview
 
-#def capture_picture(picam=picam,folder=folder,run_name="test"):
-    # picam.capture_file("{run_name}_{0:06d}.jpg".format(time.time()))
-    # print("took a picture")
-    #return
-
-# def camera_start_preview():
-#     # picam = Picamera2()
-#     # config = picam.create_preview_configuration(main={"size": (1920, 1080)})
-#     # #config = picam.create_preview_configuration()
-#     # picam.configure(config)
-#     # picam.start_preview(Preview.QTGL)
-#     # picam.start()
-#     # return picam
-#     pass
 
 def prepare_filesystem(path):
     # Get the absolute path of the current file
@@ -47,8 +33,8 @@ def drive_space_free(path):
 def print_settings(
     start_time,
     end_time,
-    total_hours_duration,
-    frequency_of_pictures,
+    total_days_duration,
+    frequency_of_pictures_seconds,
     current_time,
     complete_date_time,
     file_path,
@@ -60,9 +46,9 @@ def print_settings(
     print(f"\tThe current time is {current_time_printable} (24h format)")
     print(f"\tPictures will be taken between {start_time} and {end_time}")
     print(
-        f"\tTotal duration is {total_hours_duration} hours and will complete at {complete_date_time}"
+        f"\tTotal duration is {total_days_duration} days and will complete at {complete_date_time}"
     )
-    print(f"\tPictures will be taken every {frequency_of_pictures} minute(s)")
+    print(f"\tPictures will be taken every {frequency_of_pictures_seconds} seconds ({frequency_of_pictures_seconds/60} minutes)")
     print(f"\tPictures will be saved in the folder {file_path}")
     print(
         f"\tThe folder has {disk_free_space:.2f} MB ({disk_free_space/1024:.2f} GB) of free space"
